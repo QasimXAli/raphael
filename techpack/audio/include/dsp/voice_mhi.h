@@ -1,4 +1,4 @@
-/* Copyright (c) 2019, The Linux Foundation. All rights reserved.
+/* Copyright (c) 2020, The Linux Foundation. All rights reserved.
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License version 2 and
@@ -12,19 +12,20 @@
 #ifndef __VOICE_MHI_H__
 #define __VOICE_MHI_H__
 
-#ifdef CONFIG_VOICE_MHI
-int voice_mhi_start(void);
-int voice_mhi_end(void);
-#else
-static inline int voice_mhi_start(void)
-{
-	return 0;
-}
+#include "sdxprairie-v2.dtsi"
+#include "sdxprairie-mtp.dtsi"
 
-static inline int voice_mhi_end(void)
-{
-	return 0;
-}
-#endif
+&qnand_1 {
+	status = "ok";
+};
 
-#endif
+&emac_hw {
+	/delete-property/ vreg_rgmii-supply;
+	pinctrl-names = "default";
+	pinctrl-0 = <&vreg_rgmii_off_default>;
+};
+
+&vreg_rgmii_io_pads {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+};

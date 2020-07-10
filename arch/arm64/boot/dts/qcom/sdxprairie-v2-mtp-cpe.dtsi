@@ -9,7 +9,25 @@
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  */
+#ifndef __VOICE_MHI_H__
+#define __VOICE_MHI_H__
 
+#ifdef CONFIG_VOICE_MHI
+int voice_mhi_start(void);
+int voice_mhi_end(void);
+#else
+static inline int voice_mhi_start(void)
+{
+	return 0;
+}
+
+static inline int voice_mhi_end(void)
+{
+	return 0;
+}
+#endif
+
+#endif
 #include "sdxprairie-v2.dtsi"
 #include "sdxprairie-mtp.dtsi"
 
