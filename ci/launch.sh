@@ -4,7 +4,7 @@ set -veufo pipefail
 cd "$(dirname "$0")"
 
 
-apt-get install -y build-essential libssl-dev bison python bc curl zip flex unzip --no-install-recommends
+apt-get install -y build-essential libssl-dev bison python3 bc curl zip flex unzip --no-install-recommends
 
 
 curl -L -O https://github.com/kdrag0n/proton-clang/archive/master.zip
